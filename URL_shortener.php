@@ -62,6 +62,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "Failed to connect to the database.";
             }
         } else {
+            //Handle the case where the response does not contain link or short-url
+            echo 'Error: Unable to shorten the URL. Response body: ';
+            // Debugging: Print out the response for further investigation
+            var_dump($response);
+        }
+    }
+    
+    // Close cURL session
+    curl_close($ch);
+}
+?>
             
         
-}
+
