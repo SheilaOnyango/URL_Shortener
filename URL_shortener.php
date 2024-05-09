@@ -75,4 +75,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
             
         
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Shortener</title>
+</head>
+<body>
+    <form method="POST" action="">
+        <label for="longUrl">Enter URL to shorten:</label><br>
+        <input type="text" id="longUrl" name="longUrl"><br><br>
+        <input type="submit" value="Shorten URL">
+    </form>
+</body>
+</html>
