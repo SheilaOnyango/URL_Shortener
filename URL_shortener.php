@@ -45,5 +45,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // Decode the response
         $responseDecoded = json_decode($response, true);
+
+        //Check if the response is valid and contains link and short_url
+        if ($responseDecoded !== null && isset($responseDecoded['link']) && isset($responseDecoded['link']['short_url'])) {
+            // Output the shortened URL
+            echo 'Shortened URL: <a href="' . $responseDecoded['link']['short_url'] . '">' . $responseDecoded['link']['short_url'] . '</a>';
+            
         
 }
