@@ -38,4 +38,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Execute the POST request
     $response = curl_exec($ch);
+
+    //check for cURL errors
+    if (curl_errno($ch)) {
+        echo 'cURL Error:' . curl_error($ch);
+    } else {
+        // Decode the response
+        $responseDecoded = json_decode($response, true);
+        
 }
