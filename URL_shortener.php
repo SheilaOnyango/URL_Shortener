@@ -13,4 +13,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collect the long URL from the form input
     $longUrl = $_POST['longUrl'];
     
+    //Prepare the data to be sent to the post request
+    $data = [
+        "type" => "direct",
+        "password" => null,
+        "active" => true,
+        "expires_at" => "2024-06-25",
+        "activates_at" => "2024-03-25",
+        "utm" => "utm_source=google&utm_medium=banner",
+        "domain_id" => null,
+        "long_url" => $longUrl
+    ];
 }
