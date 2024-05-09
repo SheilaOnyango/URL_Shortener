@@ -50,6 +50,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($responseDecoded !== null && isset($responseDecoded['link']) && isset($responseDecoded['link']['short_url'])) {
             // Output the shortened URL
             echo 'Shortened URL: <a href="' . $responseDecoded['link']['short_url'] . '">' . $responseDecoded['link']['short_url'] . '</a>';
+
+            //Save the shortened URL to the database
+            $db = new DBConnect();
+            $conn = $db->connect(); // Establish database connection
+            if ($conn) { // Check if connection is successful
+                $stmt = $conn->prepare("INSERT INTO shortenedurls (long_url, short_url) VALUES (?, ?)");
+                $stmt->execute([$longUrl, $responseDecoded['link']['short_url']]);
+                echo "URL successfully saved to database.";
+            } else {
+                echo "Failed to connect to the database.";
+            }
+        } else {
             
         
 }
