@@ -24,4 +24,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "domain_id" => null,
         "long_url" => $longUrl
     ];
+
+    //Initialize cURL session
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'accept: application/json',
+        'Content-Type: application/json',
+        'Authorization: Bearer ' . $accessToken,
+    ]);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    
+    // Execute the POST request
+    $response = curl_exec($ch);
 }
